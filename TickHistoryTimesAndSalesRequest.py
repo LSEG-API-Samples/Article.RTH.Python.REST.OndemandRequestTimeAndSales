@@ -7,6 +7,7 @@ from time import sleep
 from getpass import _raw_input as input
 from getpass import getpass
 from getpass import GetPassWarning
+from collections import OrderedDict
 import os
 import gzip
 
@@ -121,7 +122,7 @@ def main():
         #Read the HTTP request body from JSON file. So you can change the request in JSON file instead.
         queryString = {}
         with open(_jsonFileName, "r") as filehandle:
-            queryString=load(filehandle)
+            queryString=load(filehandle,object_pairs_hook=OrderedDict)
 
         #print(queryString)
         ExtractRaw(_token,queryString)

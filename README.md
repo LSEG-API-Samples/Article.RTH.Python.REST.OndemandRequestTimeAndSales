@@ -329,6 +329,12 @@ We use reqeusts.get to retrieve result and then write content of the response me
                 f.write(resp.raw.read())
 
         print("Write output to "+outputfilepath+" completed")
+        print("Below is sample data from "+ outputfilepath)
+        #Read data from csv.gz and shows output from dataframe head() and tail() 
+        df=pd.read_csv(outputfilepath,compression='gzip')
+        print(df.head())
+        print("....")
+        print(df.tail())
 ```
 
 There are four parameters that user can configure in this example.

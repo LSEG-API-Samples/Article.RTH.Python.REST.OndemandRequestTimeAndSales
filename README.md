@@ -374,34 +374,58 @@ Status is completed the JobID is 0x05bf56b371cb2f86
 
 Notes:
 ======================================
-Extraction Services Version 11.0.36705 (cbb5015f7377), Built May  2 2017 18:05:54
+Extraction Services Version 11.1.37014 (36b953b5a32e), Built Jul  6 2017 18:36:01
 User ID: 9009975
-Extraction ID: 2000000000678648
-Schedule: 0x05bf56b371cb2f86 (ID = 0x0000000000000000)
-Input List (1 items):  (ID = 0x05bf56b371cb2f86) Created: 07-06-2017 13:58:25 Last Modified: 07-06-2017 13:58:25
-Report Template (3 fields): _OnD_0x05bf56b371cb2f86 (ID = 0x05bf56b3c5ab2f86) Created: 07-06-2017 13:57:49 Last Modified: 07-06-2017 13:57:49
-Schedule dispatched via message queue (0x05bf56b371cb2f86), Data source identifier (0DEC0E52146A4BFABAB5C19C5C50CD0C)
-Schedule Time: 07-06-2017 13:57:50
-Processing started at 07-06-2017 13:57:51
-Processing completed successfully at 07-06-2017 13:58:25
-Extraction finished at 07-06-2017 06:58:25 UTC, with servers: tm04n01
+Extraction ID: 2000000001287334
+Schedule: 0x05cd8b77f43b2f96 (ID = 0x0000000000000000)
+Input List (1 items):  (ID = 0x05cd8b77f43b2f96) Created: 21-07-2017 17:18:10 Last Modified: 21-07-2017 17:18:10
+Report Template (4 fields): _OnD_0x05cd8b77f43b2f96 (ID = 0x05cd8b7808bb2f96) Created: 21-07-2017 17:14:56 Last Modified: 21-07-2017 17:14:56
+Schedule dispatched via message queue (0x05cd8b77f43b2f96), Data source identifier (4D3E6BEB8A4A45E8ACE4FB5513F79DE2)
+Schedule Time: 21-07-2017 17:14:56
+Processing started at 21-07-2017 17:14:57
+Processing completed successfully at 21-07-2017 17:18:11
+Extraction finished at 21-07-2017 10:18:11 UTC, with servers: tm02n01, TRTH (182.065 secs)
 Instrument <RIC,SCB.BK> expanded to 1 RIC: SCB.BK.
-Quota Message: INFO: Tick History Cash Quota Count Before Extraction: 425; Instruments Extracted: 1; Tick History Cash Quota Count After Extraction: 425, 85% of Limit; Tick History Cash Quota Limit: 5
-00
+Quota Message: INFO: Tick History Cash Quota Count Before Extraction: 500; Instruments Extracted: 1; Tick History Cash Quota Count After Extraction: 500, 100% of Limit; Tick History Cash Quota Limit: 500
 Manifest: #RIC,Domain,Start,End,Status,Count
-Manifest: SCB.BK,Market Price,2017-05-31T02:57:36.992896230Z,2017-05-31T09:44:01.817274443Z,Active,2274
+Manifest: SCB.BK,Market Price,2016-01-04T02:30:03.877259500Z,2017-01-04T09:35:53.196802542Z,Active,1325262
 
 ======================================
 
 Retrieve result from https://hosted.datascopeapi.reuters.com/RestApi/v1/Extractions/RawExtractionResults('0x05bf56b371cb2f86')/$value
 Write output to ./TestOutput6856.csv.gz completed
 
+Below is sample data from ./TestOutput11860.csv.gz
+     #RIC        Domain                       Date-Time   Type  Bid Price  \
+0  SCB.BK  Market Price  2016-01-04T02:30:03.877259500Z  Quote      118.5   
+1  SCB.BK  Market Price  2016-01-04T02:30:03.925248539Z  Quote        NaN   
+2  SCB.BK  Market Price  2016-01-04T02:30:04.021279825Z  Quote        NaN   
+3  SCB.BK  Market Price  2016-01-04T02:30:06.580796738Z  Quote        NaN   
+4  SCB.BK  Market Price  2016-01-04T02:30:10.536533579Z  Quote        NaN   
+
+   Bid Size  Ask Price  Ask Size  
+0   10000.0        NaN       NaN  
+1       NaN        NaN    6600.0  
+2     200.0        NaN       NaN  
+3    2300.0        NaN       NaN  
+4       NaN        NaN   10800.0  
+....
+           #RIC        Domain                       Date-Time   Type  \
+1325257  SCB.BK  Market Price  2017-01-04T09:35:41.880047249Z  Quote   
+1325258  SCB.BK  Market Price  2017-01-04T09:35:42.871247756Z  Quote   
+1325259  SCB.BK  Market Price  2017-01-04T09:35:43.407336298Z  Quote   
+1325260  SCB.BK  Market Price  2017-01-04T09:35:53.196802542Z  Quote   
+1325261  SCB.BK  Market Price  2017-01-04T09:35:53.196802542Z  Quote   
+
+         Bid Price  Bid Size  Ask Price  Ask Size  
+1325257        NaN       NaN        NaN  293300.0  
+1325258        NaN  460000.0        NaN       NaN  
+1325259        NaN  460500.0        NaN       NaN  
+1325260      155.5   63600.0        NaN       NaN  
+1325261        NaN       NaN      156.0  435500.0  
+
 ```
 
-Open .csv output in Excel to see Time And Sale data
-
-![Excel CSV](./HistoricalExcel.png)
-
-
 The sources codes can be downloaded from [TickHistoryTimesAndSalesExample](https://github.com/TR-API-Samples/Article.TRTH.Python.REST.OndemandRequestTimeAndSales)
+
 

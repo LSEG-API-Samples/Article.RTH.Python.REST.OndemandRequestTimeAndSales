@@ -10,6 +10,7 @@ from getpass import GetPassWarning
 from collections import OrderedDict
 import os
 import gzip
+import pandas as pd
 
 _outputFilePath="./"
 _outputFileName="TestOutput"
@@ -98,7 +99,13 @@ def ExtractRaw(token,json_payload):
             with open(outputfilepath, 'wb') as f:
                 f.write(resp.raw.read())
 
-        print("Write output to "+outputfilepath+" completed")
+        print("Write output to "+outputfilepath+" completed\n\n")
+        print("Below is sample data from "+ outputfilepath)
+        #Read data from csv.gz and shows output from dataframe head() and tail() 
+        df=pd.read_csv(outputfilepath,compression='gzip')
+        print(df.head())
+        print("....")
+        print(df.tail())
 
     except Exception as ex:
         print("Exception occrus:", ex)

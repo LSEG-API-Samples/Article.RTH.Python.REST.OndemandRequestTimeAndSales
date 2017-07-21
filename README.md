@@ -195,17 +195,17 @@ CARR.PA,Market Price,2016-09-29T11:59:46.552806988Z,Trade,23.245,182,11:59:46.00
 ```
 
 
-### Python Implementation
+### Python Example 
+ 
 #### Prerequisite
 
-* To run the example we should have python 2.7 or 3.6 installed on the OS. We can download python installer from below link. Basically we can open the example with any text editor.
-  For a free Python IDE, we recommend PyCharm Community edition or Visual Studio Code.
+* To run the example user should have python 2.7 or 3.6 installed on OS. User can download python installer from below link. Basically user can open the example with any text editor. There are a free Python IDE such as PyCharm Community edition and Visual Studio Code user can use to open python source file.
 ```text
 https://www.python.org
 ```
-* In order to access Tick Historical end point, we must have the DSS account with permission to access Tick Historical’s REST API. Please contact Thomson Reuters Account representative if you need the permission.
-
-* To use HTTP request and get responses back, This example use Python requests module. If you don’t have requests module installed in your library, you can install it by using pip install.
+* In order to access Tick Historical end point, user must have DSS account with permission to access Tick Historical’s REST API. Please contact Thomson Reuters Account representative if you need a new account or additional permission.
+ 
+* To use HTTP request and get responses back, This example use Python requests module. If user don’t have requests installed in python library, please run below pip install command to install requests module.
 
 > pip install requests
 
@@ -403,5 +403,5 @@ Open .csv output in Excel to see Time And Sale data
 ![Excel CSV](./HistoricalExcel.png)
 
 
-The sources codes can be downloaded from [Link](./TickHistoryTimesAndSalesRequest.py)
+The sources codes can be downloaded from [TickHistoryTimesAndSalesExample](https://github.com/TR-API-Samples/Article.TRTH.Python.REST.OndemandRequestTimeAndSales)
 

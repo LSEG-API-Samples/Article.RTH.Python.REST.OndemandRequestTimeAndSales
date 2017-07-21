@@ -1,28 +1,27 @@
 {
-   "ExtractionRequest":
-   {
-      "@odata.type":"#ThomsonReuters.Dss.Api.Extractions.ExtractionRequests.TickHistoryTimeAndSalesExtractionRequest",
-      "ContentFieldNames":[
-         "Trade - Price",
-         "Trade - Volume",
-         "Trade - Exchange Time"
-      ],
-      "IdentifierList":
-      {
-         "@odata.type":"#ThomsonReuters.Dss.Api.Extractions.ExtractionRequests.InstrumentIdentifierList",
-         "InstrumentIdentifiers":[
-			{
-				"Identifier":"SCB.BK",
-				"IdentifierType":"Ric"
-			}
-         ]
-      },
-      "Condition":
-      {
-         "MessageTimeStampIn":"GmtUtc",
-         "ReportDateRangeType":"Range",
-         "QueryStartDate":"2017-05-31T00:00:00.000Z",
-         "QueryEndDate":"2017-05-31T12:00:00.000Z"
-      }
-   }
+    "ExtractionRequest": {
+        "@odata.type": "#ThomsonReuters.Dss.Api.Extractions.ExtractionRequests.TickHistoryTimeAndSalesExtractionRequest",
+        "ContentFieldNames": [
+            "Quote - Bid Price",
+            "Quote - Bid Size",
+            "Quote - Ask Price",
+            "Quote - Ask Size"
+
+        ],
+        "IdentifierList": {
+            "@odata.type": "#ThomsonReuters.Dss.Api.Extractions.ExtractionRequests.InstrumentIdentifierList",
+            "InstrumentIdentifiers": [{
+                "Identifier": "SCB.BK",
+                "IdentifierType": "Ric"
+            }],
+            "UseUserPreferencesForValidationOptions" : "False"
+        },
+        "Condition": {
+            "MessageTimeStampIn": "GmtUtc",
+            "ReportDateRangeType": "Range",
+            "QueryStartDate": "2016-01-03T23:45:00.000Z",
+            "QueryEndDate": "2017-01-04T12:30:00.000Z",
+            "DisplaySourceRIC": "True"
+        }
+    }
 }

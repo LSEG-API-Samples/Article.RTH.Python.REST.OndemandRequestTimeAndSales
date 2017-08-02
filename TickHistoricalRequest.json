@@ -8,12 +8,16 @@
             "Quote - Ask Size"
 
         ],
-        "IdentifierList": {
+       "IdentifierList": {
             "@odata.type": "#ThomsonReuters.Dss.Api.Extractions.ExtractionRequests.InstrumentIdentifierList",
+            "ValidationOptions": {
+                      "AllowHistoricalInstruments": true
+                  },
             "InstrumentIdentifiers": [{
                 "Identifier": "SCB.BK",
                 "IdentifierType": "Ric"
-            }],
+            }
+            ],
             "UseUserPreferencesForValidationOptions" : "False"
         },
         "Condition": {

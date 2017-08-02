@@ -10,9 +10,6 @@
         ],
        "IdentifierList": {
             "@odata.type": "#ThomsonReuters.Dss.Api.Extractions.ExtractionRequests.InstrumentIdentifierList",
-            "ValidationOptions": {
-                      "AllowHistoricalInstruments": "True"
-                  },
             "InstrumentIdentifiers": [{
                 "Identifier": "SCB.BK",
                 "IdentifierType": "Ric"
@@ -29,3 +26,4 @@
         }
     }
 }
+

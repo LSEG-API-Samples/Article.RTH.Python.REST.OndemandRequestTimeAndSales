@@ -11,7 +11,7 @@
        "IdentifierList": {
             "@odata.type": "#ThomsonReuters.Dss.Api.Extractions.ExtractionRequests.InstrumentIdentifierList",
             "ValidationOptions": {
-                      "AllowHistoricalInstruments": true
+                      "AllowHistoricalInstruments": "True"
                   },
             "InstrumentIdentifiers": [{
                 "Identifier": "SCB.BK",

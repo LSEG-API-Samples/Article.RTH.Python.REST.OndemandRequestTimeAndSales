@@ -12,6 +12,7 @@ import os
 import gzip
 import pandas as pd
 
+
 _outputFilePath="./"
 _outputFileName="TestOutput"
 _retryInterval=int(3) #value in second used by Pooling loop to check request status on the server
@@ -60,8 +61,9 @@ def ExtractRaw(token,json_payload):
                 message="Error: Status Code:"+str(resp.status_code)+" Message:"+resp.text
                 raise Exception(message)
 
-            #Get location from header
-            _location=resp.headers['Location']
+            #Get location from header, URL must be https so we need to change it using string replace function
+            _location=str.replace(resp.headers['Location'],"http://","https://")
+
             print("Get Status from "+str(_location))
             _jobID=""
 

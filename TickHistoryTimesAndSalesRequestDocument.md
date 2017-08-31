@@ -251,7 +251,7 @@ def ExtractRaw(token,json_payload):
     _extractRawURL="https://hosted.datascopeapi.reuters.com/RestApi/v1/Extractions/ExtractRaw"
     #Setup Request Header
     _header={}
-    _header['Prefer']='respond-async, wait=5'
+    _header['Prefer']='respond-async'
     _header['Content-Type']='application/json; odata.metadata=minimal'
     _header['Accept-Charset']='UTF-8'
     _header['Authorization']='Token'+token
@@ -295,7 +295,7 @@ We have to check the request status. This example uses a simple pooling loop to 
                     break
                 else:
                     print("Status:"+str(resp.headers['Status']))
-                sleep(_retryInterval) #wait 2 sec and re-request the status to check if it already completed
+                sleep(_retryInterval) 
 
         # Get the jobID from HTTP response
         json_resp = loads(resp.text)

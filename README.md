@@ -2,16 +2,14 @@
 
 ## Introduction
 
-[Thomson Reuters Tick History (TRTH)](https://developers.thomsonreuters.com/thomson-reuters-tick-history-trth) is an Internet-hosted product on the DataScope Select platform that provides SOAP-based and a REST API for unparalleled access to historical high frequency data across global asset classes dating to 1996.
-However [a legacy SOAP-based API](https://developers.thomsonreuters.com/thomson-reuters-tick-history-trth/thomson-reuters-tick-history-trth-soap-api) is also available, and is scheduled to be sunset. Therefore client who still use SOAP-based API may need to migrate their application to use REST API instead.
+[Refinitiv Tick History (RTH)](https://developers.refinitiv.com/en/api-catalog/refinitiv-tick-history/refinitiv-tick-history-rth-rest-api) is an Internet-hosted product on the DataScope Select platform that provides SOAP-based and a REST API for unparalleled access to historical high frequency data across global asset classes dating to 1996.
+However a legacy SOAP-based API is also available, and is scheduled to be sunset. Therefore client who still use SOAP-based API may need to migrate their application to use REST API instead.
 
-One of the main use case for application that using TRTH API is to use the API requesting Time and Sales data for RICs. Basically the SOAP-based API, client can use SubmitRequest method to request Time and Sales data. In order to migrate to the new API client has to re-implement the application to use REST instead.
+One of the main use case for application that using RTH API is to use the API requesting Time and Sales data for RICs. Basically the SOAP-based API, client can use SubmitRequest method to request Time and Sales data. In order to migrate to the new API client has to re-implement the application to use REST instead.
 
-This example demonstrate how to use the new [REST API](https://developers.thomsonreuters.com/thomson-reuters-tick-history-trth/thomson-reuters-tick-history-trth-rest-api) to request Time and Sales data. The example also explains how to interact with the TRTH REST API by not using the [REST API Toolkit .Net SDK](https://developers.thomsonreuters.com/system/files/RESTAPIToolkit.zip?download_item_nid=9132&destination=node/8605/downloads%3Fdownload_item_nid%3D9132).
+This example demonstrate how to use the new [REST API](https://developers.refinitiv.com/en/api-catalog/refinitiv-tick-history/refinitiv-tick-history-rth-rest-api) to request Time and Sales data. The example also explains how to interact with the RTH REST API by not using the [REST API Toolkit .Net SDK](https://developers.refinitiv.com/en/api-catalog/refinitiv-tick-history/refinitiv-tick-history-rth-rest-api/download).
 Instead it uses Python programming to demonstrate the API usages as Python script can works across OS and very easy to deal with HTTP request.
-This example applies the steps provided in [TRTH REST API tutorial](https://developers.thomsonreuters.com/thomson-reuters-tick-history-trth/thomson-reuters-tick-history-trth-rest-api/learning) section which locates on [Developer Portal](https://developers.thomsonreuters.com/thomson-reuters-tick-history-trth/thomson-reuters-tick-history-trth-rest-api/) to implement the Python example.
-
-
+This example applies the steps provided in [RTH REST API tutorial](https://developers.refinitiv.com/en/api-catalog/refinitiv-tick-history/refinitiv-tick-history-rth-rest-api/tutorials) section which locates on [Developer Portal](https://developers.refinitiv.com/en/api-catalog/refinitiv-tick-history/refinitiv-tick-history-rth-rest-api) to implement the Python example.
 
 ## On Demand extraction request
 
@@ -21,15 +19,18 @@ Basically there are two kind of Tick History custom solution that are
 * Stored & scheduled- *The user define report attributes and it stored for future use, and schedule the report to run at set times or when triggered by events*.
 
 This example uses only On Demand extraction to request Tick data/Tick History Time and Sales. However the raw data extraction workflow can apply to several types of On Demand historical data requests:
+
 ```text
     - Tick data
     - Market depth
     - Intraday bars
     - End of Day data
 ```
-More details can be found at: [Tick History API User Guide](https://developers.thomsonreuters.com/thomson-reuters-tick-history-trth/thomson-reuters-tick-history-trth-rest-api/docs?content=11928&type=documentation_item)
+
+More details can be found at: [Tick History API User Guide](https://developers.refinitiv.com/en/api-catalog/refinitiv-tick-history/refinitiv-tick-history-rth-rest-api/documentation)
 
 This example uses the following steps to implement On Demand Extraction:
+
 ```text
 1.Get Authentication Token from DSS server.
 
@@ -42,10 +43,10 @@ This example uses the following steps to implement On Demand Extraction:
 5.Retrieve the data using the JobID from step 4 and write it to file.
 ```
 
-
 **On Demand Tick Data extraction request payload**
 
 In this request we need to:
+
 * Specifying the instrument on which we are reporting.
 * Specifying the type of report (Time and Sales)
 * Specifying the Time and Sales report type’s Quote and Trade fields to include in the report.
@@ -55,12 +56,13 @@ In this request we need to:
 ### 1.Authentication Request
 
 To access Tick Historical data, we have to pass Token to the request header, therefore the first step is to get a new Token from DSS server.
-This example will apply method to send Authentication request from [Programming without SDK Tutorial](https://developers.thomsonreuters.com/thomson-reuters-tick-history-trth/thomson-reuters-tick-history-trth-rest-api/learning?content=13561&type=learning_material_item) to send a reqeust.
+This example will apply method to send Authentication request from [Programming without SDK Tutorial](https://developers.refinitiv.com/en/api-catalog/refinitiv-tick-history/refinitiv-tick-history-rth-rest-api/tutorials) to send a reqeust.
 
 ### 2.Send On Demand Request
 
 #### HTTP Request
-*   **Endpoint URL:**
+
+* **Endpoint URL:**
 ```
 https://hosted.datascopeapi.reuters.com/RestApi/v1/Extractions/ExtractRaw
 ```
@@ -81,7 +83,7 @@ Authorization: <Authorization Token>
     * **The list of instrument identifiers**, each one with its type. Below sample, we define one instrument using a RIC.
     * **The conditions**: they include the date range for the request.
 
-We can find available parameters from [**Thomson Reuters Tick History 10.8 REST API Use Case Reference v1.0**](https://developers.thomsonreuters.com/sites/default/files/Thomson%20Reuters%20Tick%20History%2011.0%20REST%20API%20Use%20Cases%20Reference%20v1.0.pdf).
+Please find additional parameters from [**Refinitiv Tick History REST API Use Case Reference**](https://developers.refinitiv.com/en/api-catalog/refinitiv-tick-history/refinitiv-tick-history-rth-rest-api/documentation).
 
 *   Sample JSON HTTP request payload
 ```
@@ -117,7 +119,7 @@ We can find available parameters from [**Thomson Reuters Tick History 10.8 REST 
 * After we send HTTP request message to the DSS server, the application will receive response message back and we expected to receive HTTP response status code of 202 Accepted, and the header will contain a location URL.
 The next step is to check the request status by polling the location URL regularly until it returns a HTTP response status code 200 OK.
 
-* If the request is for a small amount of data, the response could have an HTTP status of 200 OK, and the body will contain a jobId and Notes. According to [DATASCOPE SELECT document](https://developers.thomsonreuters.com/datascope-select-dss/datascope-select-rest-api/docs?content=6091&type=documentation_item), the Notes provides information about the extraction execution, including processing statistics, embargo delays, suppressed items and warnings.
+* If the request is for a small amount of data, the response could have an HTTP status of 200 OK, and the body will contain a jobId and Notes. According to [DATASCOPE SELECT document](https://developers.refinitiv.com/en/api-catalog/datascope-select/datascope-select-rest-api), the Notes provides information about the extraction execution, including processing statistics, embargo delays, suppressed items and warnings.
 
 * We skip the step where we check the request status, and go directly to the last step, which is to retrieve the data using the jobId.
   Other HTTP status codes can be encountered, follow [this link](https://hosted.datascopeapi.reuters.com/RestApi.Help/Home/StatusCodes) for a full list with detailed explanations.
@@ -147,19 +149,23 @@ Authorization: <Authorization Token>
 ```
 
 #### HTTP response
+
 If we receive an HTTP status 202 Accepted response (the same as in the previous step), it means the request has not yet completed. We must wait a bit and check the request status again.
 If we receive an HTTP status 200 OK response, the body will contain a jobId and Notes and we can go to the last step to retrieve the data using the jobId.
 
 ### 4.Retrieve data
+
 #### HTTP request
 
 It is mandatory to have received a 200 OK response with a JobID from a previous step before proceeding with this last step.
 
 *   **URL**:
 Note the jobId value (0x058dcda3c29b5841) used as parameter in the URL:
+
 ```
 https://hosted.datascopeapi.reuters.com/RestApi/v1/Extractions/RawExtractionResults('0x058dcda3c29b5841')/$value
 ```
+
 *   **Method**: GET
 *   **Headers**:
 *   **Prefer**: respond-async
@@ -169,10 +175,12 @@ https://hosted.datascopeapi.reuters.com/RestApi/v1/Extractions/RawExtractionResu
 #### HTTP response
 
 We should get a response of this type:
+
 ```
 Status:200 OK
 ```
 Relevant headers:
+
 ```
 Content-Encoding: gzip
 Content-Type: text/plain
@@ -194,17 +202,18 @@ CARR.PA,Market Price,2016-09-29T11:59:46.352798946Z,Trade,23.25,207,11:59:46.000
 CARR.PA,Market Price,2016-09-29T11:59:46.552806988Z,Trade,23.245,182,11:59:46.000000000
 ```
 
+### Python Example
 
-### Python Example 
- 
 #### Prerequisite
 
 * To run the example user should have python 2.7 or 3.6 installed on OS. User can download python installer from below link. Basically user can open the example with any text editor. There are a free Python IDE such as PyCharm Community edition and Visual Studio Code user can use to open python source file.
+
 ```text
 https://www.python.org
 ```
-* In order to access Tick Historical end point, user must have DSS account with permission to access Tick Historical’s REST API. Please contact Thomson Reuters Account representative if you need a new account or additional permission.
- 
+
+* In order to access Tick Historical end point, user must have DSS account with permission to access Tick Historical’s REST API. Please contact Refinitiv Account representative if you need a new account or additional permission.
+
 * To use HTTP request and get responses back, This example use Python requests module. If user don’t have requests installed in python library, please run below pip install command to install requests module.
 
 > pip install requests
@@ -235,8 +244,7 @@ def RequestNewToken(username="",password=""):
     return loads(resp.text)['value']
 ```
 
-
-#### **Step2**: Send On Demand Extraction request.
+#### **Step2**: Send On Demand Extraction request
 
 We have to import request and json module in the example. The json module is required to manage JSON data in the HTTP request and response.
 
@@ -245,6 +253,7 @@ from json import dumps, loads, load
 from requests import post
 from requests import get
 ```
+
 Request historical data from the server, using an on demand extraction. We need to pass json_payload which is request body to the server.
 
 ```python
@@ -262,7 +271,9 @@ def ExtractRaw(token,json_payload):
 
     resp=post(_extractRawURL,data=None,json=json_payload,headers=_header)
 ```
+
 To pass json_payload to HTTP post, we read the JSON request message from JSON file.
+
 ```python
 #Read the HTTP request body from JSON file. So we can change the request in JSON file instead.
 queryString = {}
@@ -274,7 +285,9 @@ ExtractRaw(_token,queryString)
 ```
 
 #### **Step3**: Polling request status from the server.
+
 We have to check the request status. This example uses a simple pooling loop to check status until it get status code 200 (Completed). Then we can get jobID from response body.
+
 ```python
 
         #Raise exception with error message if the returned status is not 202 (Accepted) or 200 (Ok)
@@ -312,10 +325,9 @@ We have to check the request status. This example uses a simple pooling loop to 
             print("======================================\n")
 ```
 
-
-
 #### **Step4**: Retrieve the data using the JobID and Write to file.
 We use reqeusts.get to retrieve result and then write content of the response message to file.
+
 ```python
 # Request should be completed then Get the result by passing jobID to RAWExtractionResults URL
         _getResultURL=str("https://hosted.datascopeapi.reuters.com/RestApi/v1/Extractions/RawExtractionResults(\'"+_jobID+"\')/$value")
@@ -352,6 +364,7 @@ _jsonFileName="TickHistoricalRequest.json"
 ```
 
 #### How to run the example
+
 This example requires JSON file "TickHistoricalRequest.json" which contains JSON payload for HTTP request.
 We can modify JSON file to change request body.
 
@@ -359,6 +372,7 @@ We can modify JSON file to change request body.
 >python.exe TickHistoryTimesAndSalesRequest.py
 
 Then we should see the following console output
+
 ```
 >python TickHistoryTimesAndSalesRequest.py
 
@@ -433,5 +447,3 @@ Below is sample data from ./TestOutput11860.csv.gz
 ```
 
 The sources codes can be downloaded from [TickHistoryTimesAndSalesExample](https://github.com/TR-API-Samples/Article.TRTH.Python.REST.OndemandRequestTimeAndSales)
-
-

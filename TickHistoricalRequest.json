@@ -1,6 +1,6 @@
 {
     "ExtractionRequest": {
-        "@odata.type": "#ThomsonReuters.Dss.Api.Extractions.ExtractionRequests.TickHistoryTimeAndSalesExtractionRequest",
+        "@odata.type": "#DataScope.Select.Api.Extractions.ExtractionRequests.TickHistoryTimeAndSalesExtractionRequest",
         "ContentFieldNames": [
             "Quote - Bid Price",
             "Quote - Bid Size",
@@ -9,7 +9,7 @@
 
         ],
        "IdentifierList": {
-            "@odata.type": "#ThomsonReuters.Dss.Api.Extractions.ExtractionRequests.InstrumentIdentifierList",
+            "@odata.type": "#DataScope.Select.Api.Extractions.ExtractionRequests.InstrumentIdentifierList",
             "InstrumentIdentifiers": [{
                 "Identifier": "SCB.BK",
                 "IdentifierType": "Ric"

@@ -19,7 +19,7 @@ _retryInterval=int(30) #value in second used by Pooling loop to check request st
 _jsonFileName="TickHistoricalRequest.json"
 
 def RequestNewToken(username="",password=""):
-    _AuthenURL = "https://hosted.datascopeapi.reuters.com/RestApi/v1/Authentication/RequestToken"
+    _AuthenURL = "https://selectapi.datascope.refinitiv.com/RestApi/v1/Authentication/RequestToken"
     _header= {}
     _header['Prefer']='respond-async'
     _header['Content-Type']='application/json; odata.metadata=minimal'
@@ -41,7 +41,7 @@ def RequestNewToken(username="",password=""):
 
 def ExtractRaw(token,json_payload):
     try:
-        _extractRawURL="https://hosted.datascopeapi.reuters.com/RestApi/v1/Extractions/ExtractRaw"
+        _extractRawURL="https://selectapi.datascope.refinitiv.com/RestApi/v1/Extractions/ExtractRaw"
         #Setup Request Header
         _header={}
         _header['Prefer']='respond-async'
@@ -91,7 +91,7 @@ def ExtractRaw(token,json_payload):
             print("======================================\n")
 
         # Request should be completed then Get the result by passing jobID to RAWExtractionResults URL
-        _getResultURL = str("https://hosted.datascopeapi.reuters.com/RestApi/v1/Extractions/RawExtractionResults(\'" + _jobID + "\')/$value")
+        _getResultURL = str("https://selectapi.datascope.refinitiv.com/RestApi/v1/Extractions/RawExtractionResults(\'" + _jobID + "\')/$value")
         print("Retrieve result from " + _getResultURL)
         resp=get(_getResultURL,headers=_header,stream=True)
 
